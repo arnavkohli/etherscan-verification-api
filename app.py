@@ -21,7 +21,7 @@ def get_data_from_etherscan(txn_hash):
 
 		url = f"https://etherscan.io/tx/{txn_hash}"
 		options = Options()
-		options.headless = True
+		#options.headless = True
 		options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 		options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36')
 		options.add_argument('accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9')
