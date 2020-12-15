@@ -27,6 +27,7 @@ def get_data_from_etherscan(txn_hash):
 		options.add_argument('accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9')
 		options.add_argument('accept-encoding=gzip, deflate, br')
 		options.add_argument('accept-language=en-US,en;q=0.9')
+		options.add_argument('--lang=en_US') 
 		options.add_argument('--disable-dev-shm-usage')
 		options.add_argument('--no-sandbox')
 		driver = webdriver.Chrome(PATH_TO_DRIVER, options=options)
