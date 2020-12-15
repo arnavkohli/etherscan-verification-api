@@ -4,7 +4,8 @@ from flask import Flask, request
 import json, os
 
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+#from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 import time
 from datetime import datetime
 
@@ -17,12 +18,15 @@ VALID_API_TOKENS = [
 def get_data_from_etherscan(txn_hash):
 	try:
 		#PATH_TO_DRIVER = './drivers/chromedriver'
-		PATH_TO_DRIVER = os.environ.get('CHROMEDRIVER_PATH')
+		#PATH_TO_DRIVER = os.environ.get('CHROMEDRIVER_PATH')
+		PATH_TO_DRIVER = os.environ.get('GECKODRIVER_PATH')
 
 		url = f"https://etherscan.io/tx/{txn_hash}"
 		options = Options()
-		#options.headless = True
-		options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+		options.headless = True
+		# options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+		options.binary_location = os.environ.get("FIREFOX_BIN")
+
 		options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36')
 		options.add_argument('accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9')
 		options.add_argument('accept-encoding=gzip, deflate, br')
@@ -30,7 +34,8 @@ def get_data_from_etherscan(txn_hash):
 		options.add_argument('--lang=en_US') 
 		options.add_argument('--disable-dev-shm-usage')
 		options.add_argument('--no-sandbox')
-		driver = webdriver.Chrome(PATH_TO_DRIVER, options=options)
+		#driver = webdriver.Chrome(PATH_TO_DRIVER, options=options)
+		driver = webdriver.Firefox(PATH_TO_DRIVER, options=options)
 		driver.get(url)
 
 		time.sleep(2)
