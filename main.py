@@ -11,8 +11,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 VALID_API_TOKENS = [
-	'aa',
-	'bb'
+	'yaAgVgF06EH1v5ea'
 ]
 
 def get_data_from_etherscan(txn_hash):
